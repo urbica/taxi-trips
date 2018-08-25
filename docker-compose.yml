@@ -12,13 +12,19 @@ services:
   martin:
     image: urbica/martin
     restart: unless-stopped
-    env_file:
-      - .env
+    environment:
+      - DATABASE_URL=postgres://postgres@db/db
     depends_on:
       - db
 
   db:
     image: timescale/timescaledb-postgis
     restart: unless-stopped
-    env_file:
-      - .env
+    environment:
+      - POSTGRES_DB=db
+      - POSTGRES_USER=postgres
+    volumes:
+      - ./data:/var/lib/data
+      - ./db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
