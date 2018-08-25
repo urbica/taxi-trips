@@ -24,7 +24,9 @@ services:
       - POSTGRES_DB=db
       - POSTGRES_USER=postgres
     volumes:
-      - ./data:/var/lib/data
+      - ./data:/data
       - ./db:/var/lib/postgresql/data
+      - ./scripts:/scripts
+      - ./scripts/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
     ports:
       - 5432:5432
