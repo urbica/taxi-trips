@@ -8,6 +8,7 @@ services:
       - martin
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./src:/usr/share/nginx/html
     ports:
       - 80:80
 
