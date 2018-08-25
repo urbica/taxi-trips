@@ -8,6 +8,8 @@ services:
       - martin
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
 
   martin:
     image: urbica/martin
